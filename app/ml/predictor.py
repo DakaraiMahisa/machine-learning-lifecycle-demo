@@ -6,21 +6,21 @@ import numpy as np
 MODEL_PATH = Path("artifacts/model.pkl")
 SCALER_PATH = Path("artifacts/scaler.pkl")
 
-def load_model():
-    """
-    Load trained ML model.
-    """
-
-    return joblib.load(MODEL_PATH)
+model = None
+scaler = None
 
 
-def load_scaler():
+def load_artifacts():
     """
-    Load preprocessing scaler.
+    Load ML artifacts into memory.
     """
 
-    return joblib.load(SCALER_PATH)
+    global model
+    global scaler
 
+    model = joblib.load(MODEL_PATH)
+
+    scaler = joblib.load(SCALER_PATH)
 
 
 def predict_machine_status(
@@ -33,10 +33,6 @@ def predict_machine_status(
     Predict machine health status.
     """
 
-    model = load_model()
-
-    scaler = load_scaler()
-
     input_data = np.array([
         [
             temperature,
@@ -46,9 +42,13 @@ def predict_machine_status(
         ]
     ])
 
-    scaled_data = scaler.transform(input_data)
+    scaled_data = scaler.transform(
+        input_data
+    )
 
-    prediction = model.predict(scaled_data)
+    prediction = model.predict(
+        scaled_data
+    )
 
     return prediction[0]
 

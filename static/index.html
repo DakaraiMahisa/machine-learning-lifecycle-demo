@@ -2,100 +2,115 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>ML Lifecycle Dashboard</title>
 
     <link rel="stylesheet" href="/static/style.css" />
   </head>
+
   <body>
     <div class="container">
-      <header>
-        <h1>Industrial Sensor ML Lifecycle Dashboard</h1>
+      <header class="hero">
+        <div class="hero-content">
+          <h1>Industrial Sensor ML Lifecycle Dashboard</h1>
 
-        <p>End-to-End Machine Learning Workflow Demonstration</p>
+          <p>
+            End-to-End Machine Learning Workflow Demonstration with FastAPI,
+            Docker, and Random Forest Classification.
+          </p>
+        </div>
       </header>
 
-      <section class="card">
-        <h2>Data Collection</h2>
+      <div class="dashboard-grid">
+        <section class="card">
+          <h2>Data Collection</h2>
 
-        <p>
-          Simulated industrial IoT sensor data including temperature, humidity,
-          voltage, and vibration.
+          <p>
+            Simulated industrial IoT sensor data including temperature,
+            humidity, voltage, and vibration metrics.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Data Preprocessing</h2>
+
+          <ul>
+            <li>Duplicate removal</li>
+            <li>Missing value handling</li>
+            <li>Feature scaling</li>
+            <li>Train-test split</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Model Training</h2>
+
+          <p>
+            Random Forest Classifier trained on preprocessed industrial sensor
+            datasets.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Model Evaluation</h2>
+
+          <ul>
+            <li>Accuracy</li>
+            <li>Precision</li>
+            <li>Recall</li>
+            <li>F1 Score</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="card prediction-card">
+        <h2>Live Machine Status Prediction</h2>
+
+        <p class="prediction-description">
+          Enter sensor values below to predict industrial machine health status.
         </p>
-      </section>
-
-      <section class="card">
-        <h2>Data Preprocessing</h2>
-
-        <ul>
-          <li>Duplicate removal</li>
-          <li>Missing value handling</li>
-          <li>Feature scaling</li>
-          <li>Train-test split</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Model Training</h2>
-
-        <p>
-          Random Forest Classifier trained on processed industrial sensor data.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>Model Evaluation</h2>
-
-        <p>Metrics:</p>
-
-        <ul>
-          <li>Accuracy</li>
-          <li>Precision</li>
-          <li>Recall</li>
-          <li>F1 Score</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Live Prediction</h2>
 
         <form id="prediction-form">
-          <input
-            type="number"
-            step="0.1"
-            id="temperature"
-            placeholder="Temperature"
-            required
-          />
+          <div class="input-grid">
+            <input
+              type="number"
+              step="0.1"
+              id="temperature"
+              placeholder="Temperature"
+              required
+            />
 
-          <input
-            type="number"
-            step="0.1"
-            id="humidity"
-            placeholder="Humidity"
-            required
-          />
+            <input
+              type="number"
+              step="0.1"
+              id="humidity"
+              placeholder="Humidity"
+              required
+            />
 
-          <input
-            type="number"
-            step="0.1"
-            id="voltage"
-            placeholder="Voltage"
-            required
-          />
+            <input
+              type="number"
+              step="0.1"
+              id="voltage"
+              placeholder="Voltage"
+              required
+            />
 
-          <input
-            type="number"
-            step="0.1"
-            id="vibration"
-            placeholder="Vibration"
-            required
-          />
+            <input
+              type="number"
+              step="0.1"
+              id="vibration"
+              placeholder="Vibration"
+              required
+            />
+          </div>
 
-          <button type="submit">Predict</button>
+          <button type="submit">Predict Machine Status</button>
         </form>
 
-        <div id="result"></div>
+        <div id="result">Awaiting prediction...</div>
       </section>
     </div>
 
